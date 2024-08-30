@@ -1,0 +1,13 @@
+package lesson03;
+
+public class ScopeEx {
+
+	public static void main(String[] args) {
+		{
+			int num = 10;
+			System.out.println(num);
+		}
+
+	}
+
+}

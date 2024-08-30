@@ -1,0 +1,14 @@
+package lesson04;
+
+public class OpEx6_1 {
+
+	public static void main(String[] args) {
+		String s = Integer.toBinaryString(2010112321);
+		System.out.println(s);
+		String s2 = Integer.toBinaryString(221);
+		System.out.println(s2);
+		
+
+	}
+
+}

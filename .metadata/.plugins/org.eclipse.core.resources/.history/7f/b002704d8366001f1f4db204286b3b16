@@ -1,0 +1,16 @@
+package lesson04;
+
+public class OpEx6_2 {
+
+	public static void main(String[] args) {
+		// 숫자를 문자열로
+		int num = 10;
+		String s = num;
+		
+		System.out.println(s);
+		
+		// 문자열을 숫자로
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package test;
+
+public class HelloJava {
+
+	public static void main(String[] args) {
+		
+		char c = C
+		
+		System.out.println("C");
+	}
+
+}
