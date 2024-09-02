@@ -30,6 +30,12 @@ public class Score {
 //		System.out.println(pi * 1000);
 //		System.out.println((int)(pi * 1000 + 0.5) /1000d);
 		
+		char ch = 'B';
+		
+		char lowerCase = (char)(ch == 'A' ? ch+32 : ch+32);
+		
+		System.out.println("ch:"+ch);
+		System.out.println("ch to lowerCase:"+lowerCase);
 		
 	}
 
