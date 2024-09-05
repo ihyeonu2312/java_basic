@@ -6,7 +6,7 @@ public class CarMain2 {
 		
 		// Car 타입의 배열객체 생성 
 		Car[] cars = new Car[3];
-
+		
 		// car 객체 생성
 		Car tico = new Car();
 		tico.color = "화이트";
@@ -25,6 +25,6 @@ public class CarMain2 {
 		
 		System.out.println("0번 인덱스 color : "+cars[0].color);
 		System.out.println("2번 인덱스 color : "+cars[2].color);
-	}
+	}	
 		
-}
+}		

@@ -6,7 +6,7 @@ public class CarMain {
 		
 		Car tico = new Car();
 		Car pride = new Car();
-		
+		 //인스턴스변수
 		tico.color = "화이트";
 		tico.company = "대우";
 		tico.type = "경차";
