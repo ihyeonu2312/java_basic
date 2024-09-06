@@ -11,11 +11,13 @@ public class StudentService {
 		students[cnt++] = new Student(1, "새똥이", 80, 90, 100);
 		students[cnt++] = new Student(2, "개똥이", 77, 66, 77);
 	}
+	
 	// 학생 등록
 	void add() {
 		int no = StudentUtils.nextInt("학번");
 //		System.out.println("add()");
 	}
+	
 	// 학생 목록
 	void list() {
 //		System.out.println("list()");
@@ -33,12 +35,16 @@ public class StudentService {
 					);
 		}
 	}
+	
 	// 학생 이름, 점수 수정
 	void modify() {
 		System.out.println("modify()");
+		
 	}
+	
 	// 학생 삭제
 	void remove() {
 		System.out.println("remove()");
+		
 	}
 }
