@@ -2,10 +2,17 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.StrictMath"/>
     <fullyQualifiedTypeName name="java.lang.System.Logger"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.MediaSize.Engineering"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="lesson07_oop.Car"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="lesson07_oop.Avante"/>
+    <fullyQualifiedTypeName name="lesson07_oop.Marine"/>
+    <fullyQualifiedTypeName name="lesson07_oop.Param"/>
+    <fullyQualifiedTypeName name="java.lang.invoke.MethodHandle"/>
+    <fullyQualifiedTypeName name="lesson07_oop.MethodMain"/>
+    <fullyQualifiedTypeName name="java.util.Stack"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

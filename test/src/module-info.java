@@ -1,8 +1,3 @@
-/**
- * 
- */
-/**
- * 
- */
 module test {
+	exports test;
 }
