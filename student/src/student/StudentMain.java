@@ -1,14 +1,11 @@
 package student;
 
-import java.util.Scanner;
-
 public class StudentMain {
 	
 	public static void main(String[] args) {
 		
 		// UI 
 		// Create Read Update Delete
-		Scanner scanner = new Scanner(System.in);
 		StudentService ss = new StudentService();
 		while(true) {
 //			System.out.println("1.조회	2.등록	3.수정	4.삭제	5.종료");
