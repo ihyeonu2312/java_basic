@@ -1,27 +1,29 @@
 package day2;
 
 public class Circle {
-	
 	double r;
-	
-	public Circle() {}
+
+	public Circle() {
+
+	}
+
 	public Circle(double r) {
 		setR(r);
 	}
-	
+
 	Circle setR(double r) {
 		this.r = r;
 		return this;
 	}
-	
-	void printRound() {
+
+	Circle printRound() {
 		System.out.println(Math.PI * r * 2);
 		return this;
 	}
-	
-	void printArea() {
+
+	Circle printArea() {
 		System.out.println(Math.PI * r * r);
 		return this;
 	}
-	
+
 }

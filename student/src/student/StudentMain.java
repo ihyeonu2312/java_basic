@@ -4,7 +4,7 @@ public class StudentMain {
 	
 	public static void main(String[] args) {
 		
-		// UI 
+		// UI
 		// Create Read Update Delete
 		StudentService ss = new StudentService();
 		while(true) {

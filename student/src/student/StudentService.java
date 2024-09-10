@@ -3,12 +3,13 @@ package student;
 import static student.StudentUtils.*;
 import java.util.Arrays;
 
+
 // Logic
 
 public class StudentService {
 
-	Student[] students = new Student[5];
-	int cnt;
+	private Student[] students = new Student[5];
+	private int cnt;
 	
 	{
 		students[cnt++] = new Student(1, "새똥이", 80, 90, 100);
@@ -16,7 +17,7 @@ public class StudentService {
 	}
 	
 	// 학생 등록
-	void add() {
+	public void add() {
 		
 		
 		int no = nextInt("학번");
@@ -37,7 +38,7 @@ public class StudentService {
 
 	
 	// 학생 목록
-	void list() {
+	public void list() {
 //		System.out.println("list()");
 		System.out.println("학번	이름	국어	영어	수학	총점	평균");
 		System.out.println("====================================================");
@@ -54,20 +55,19 @@ public class StudentService {
 //					);
 			System.out.println(students[i]);
 		}
-		System.out.println(Arrays.toString(students));
 	}
 	
 	// 학생 이름, 점수 수정
-	void modify() {
+	public void modify() {
 		Student s = findByNo();
 		if(s == null) {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
 			return;
 		}
-		s.name = nextLine("이름");
-		s.kor = nextInt("국어");
-		s.eng = nextInt("영어");
-		s.mat = nextInt("수학");
+		s.setName(nextLine("이름"));
+		s.setKor(nextInt("국어"));
+		s.setEng(nextInt("영어"));
+		s.setMat(nextInt("수학"));
 		
 //		System.out.println("수정");
 //		int modifyno = StudentUtils.nextInt("수정할 학번");
@@ -79,7 +79,7 @@ public class StudentService {
 	}
 	
 	// 학생 삭제
-	void remove() {
+	public void remove() {
 		Student s = findByNo();
 		if(s == null) {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
@@ -93,11 +93,11 @@ public class StudentService {
 			}
 		}
 	}
-	Student findByNo() {
+	private Student findByNo() {
 		Student student = null;
 		int no = nextInt("학번");
 		for(int i = 0 ; i < cnt ; i++) {
-			if(students[i].no == no) {
+			if(students[i].getNO() == no) {
 				student = students[i];
 			}
 		}

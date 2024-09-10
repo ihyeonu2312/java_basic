@@ -32,6 +32,53 @@ public class Student {
 		
 	}
 	
+	// no getter
+	public String getName() {
+		return name;
+		
+	}
+	
+	// no stter
+	public void setName(String name){
+		this.name = name;
+		
+	}
+	
+	// no getter
+	public int getKor() {
+		return kor;
+		
+	}
+	
+	// no stter
+	public void setKor(int kor){
+		this.kor = kor;
+		
+	}
+	
+	// no getter
+	public int getEng() {
+		return eng;
+		
+	}
+	
+	// no stter
+	public void setEng(int eng){
+		this.eng = eng;
+		
+	}
+	// no getter
+	public int getMat() {
+		return mat;
+		
+	}
+	
+	// no stter
+	public void setMat(int mat){
+		this.mat = mat;
+		
+	}
+	
 	public String toString() {
 		return String.format("%3d %5s %6d %6d %7d %7d %7.2f", no, name, kor, eng, mat, total(), avg());
 		
@@ -39,7 +86,7 @@ public class Student {
 	
 	public int total() {
 		return kor + eng + mat;
-	
+		
 	}
 	public double avg() {
 		return total() / 3d;

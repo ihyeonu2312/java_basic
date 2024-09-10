@@ -5,18 +5,8 @@ public class CircleMain {
 //		Circle circle = new Circle(5);
 //		circle.printRound();
 //		circle.printArea();
-		static {
-			
-			
-			
-		}
-		{
-			
-			
-		}
-		new Circle()
-		.setR(5)
-		.printArea()
-	
+
+		new Circle().setR(5).printArea().printRound().setR(10).printArea().printRound();
+
 	}
 }
