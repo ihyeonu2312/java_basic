@@ -3,6 +3,10 @@ package student;
 public class StudentMain {
 	
 	public static void main(String[] args) {
+		// 이름은 반드시 한글, 공백 불가능, 최소 2글자, 최대 4글자
+		// 점수의 범위는 0~100까지
+		// 학번 중복 불허
+		
 		
 		// UI
 		// Create Read Update Delete

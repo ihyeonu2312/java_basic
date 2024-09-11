@@ -1,6 +1,6 @@
-package Test;
+package shape;
 
-public class Hexahedron extends Shape {
+public class Hexahedron extends Shape implements D3 {
 
 	@Override
 	double length() {

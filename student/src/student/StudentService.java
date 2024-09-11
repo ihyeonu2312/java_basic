@@ -18,8 +18,7 @@ public class StudentService {
 	
 	// 학생 등록
 	public void add() {
-		
-		
+	
 		int no = nextInt("학번");
 		String name = nextLine("이름");
 		int kor = nextInt("국어 점수");
@@ -28,7 +27,7 @@ public class StudentService {
 		
 	
 		//		System.out.println("add()");
-		
+		if()
 	
 		if(students.length == cnt) {
 			students = Arrays.copyOf(students, students.length * 2 );
@@ -59,6 +58,8 @@ public class StudentService {
 	
 	// 학생 이름, 점수 수정
 	public void modify() {
+		try {
+			
 		Student s = findByNo();
 		if(s == null) {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
@@ -68,6 +69,9 @@ public class StudentService {
 		s.setKor(nextInt("국어"));
 		s.setEng(nextInt("영어"));
 		s.setMat(nextInt("수학"));
+		} catch(NumberFormatException e) {
+			System.out.println("숫자를 입력해 주세요");
+		}
 		
 //		System.out.println("수정");
 //		int modifyno = StudentUtils.nextInt("수정할 학번");
@@ -80,6 +84,9 @@ public class StudentService {
 	
 	// 학생 삭제
 	public void remove() {
+		try {
+		
+		
 		Student s = findByNo();
 		if(s == null) {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
@@ -91,6 +98,9 @@ public class StudentService {
 				System.arraycopy(students, i + 1, students, cnt-- -i, 1);
 				break;
 			}
+		}
+		}catch(NumberFormatException e) {
+			System.out.println("숫자를 입력해 주세요");
 		}
 	}
 	private Student findByNo() {
@@ -107,4 +117,5 @@ public class StudentService {
 		
 		
 	}
+	
 }
