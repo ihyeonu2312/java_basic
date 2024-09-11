@@ -6,8 +6,13 @@ import java.util.Arrays;
 
 // Logic
 
-public class StudentService {
+public class StudentService extends Student {
 
+	
+
+		
+	
+	
 	private Student[] students = new Student[5];
 	private int cnt;
 	
@@ -18,8 +23,15 @@ public class StudentService {
 	
 	// 학생 등록
 	public void add() {
+//		try {
+			
 	
 		int no = nextInt("학번");
+		
+//		if(no != ) {
+//			throw new ScoreException ("가");
+//		}
+		
 		String name = nextLine("이름");
 		int kor = nextInt("국어 점수");
 		int eng = nextInt("영어 점수");
@@ -27,12 +39,15 @@ public class StudentService {
 		
 	
 		//		System.out.println("add()");
-		if()
+	
 	
 		if(students.length == cnt) {
 			students = Arrays.copyOf(students, students.length * 2 );
 		}
 		students[cnt++] = new Student(no, name, kor, eng, mat);
+//		} catch(Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 
 	
@@ -55,6 +70,10 @@ public class StudentService {
 			System.out.println(students[i]);
 		}
 	}
+	// 이름은 반드시 한글, 공백 불가능, 최소 2글자, 최대 4글자
+	// 점수의 범위는 0~100까지
+	// 학번 중복 불허
+	
 	
 	// 학생 이름, 점수 수정
 	public void modify() {
