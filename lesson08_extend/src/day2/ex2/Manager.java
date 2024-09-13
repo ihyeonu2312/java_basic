@@ -1,9 +1,7 @@
 package day2.ex2;
 
-public class// abstract Manager extends Employee{
-	
-	public Manager (Stirng name) {
+public abstract class Manager extends Employee{
+	public Manager(String name) {
 		super(name);
 	}
-	
 }

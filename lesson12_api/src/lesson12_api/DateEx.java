@@ -16,13 +16,15 @@ public class DateEx {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM-dd HH:mm:ss");
 		System.out.println(sdf.format(date));
 		
-		long target = date.getTime() + 10000L * 24 * 60 * 60 * 1000;
+		long target = date.getTime() + 500L * 24 * 60 * 60 * 1000;
 		System.out.println(new Date(target));
 		
 		System.out.println(date.getYear());
 		System.out.println(date.getYear() + 1900);
 		
+		Date chrismas = new Date(123, 11, 25, 0, 0, 0);
 		
+		System.out.println(chrismas);
 		
 	}
 }
