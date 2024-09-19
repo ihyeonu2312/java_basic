@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="marble.Player"/>
-    <fullyQualifiedTypeName name="mart.Product"/>
-    <fullyQualifiedTypeName name="mart.CommonUtils"/>
-    <fullyQualifiedTypeName name="mart.Buyer"/>
-    <fullyQualifiedTypeName name="mart.Tv"/>
-    <fullyQualifiedTypeName name="lesson09.Fax"/>
-    <fullyQualifiedTypeName name="lesson09.Complexer"/>
-    <fullyQualifiedTypeName name="lesson09_Starcraft.Marine"/>
-    <fullyQualifiedTypeName name="lesson09_Starcraft.Tank"/>
-    <fullyQualifiedTypeName name="lesson09_Starcraft.Repairable"/>
-    <fullyQualifiedTypeName name="java.lang.Deprecated"/>
-    <fullyQualifiedTypeName name="lesson09_Starcraft.Unit"/>
-    <fullyQualifiedTypeName name="sun.jvm.hotspot.oops.java_lang_Class"/>
     <fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
     <fullyQualifiedTypeName name="java.lang.annotation.RetentionPolicy"/>
     <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
@@ -36,13 +23,11 @@
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="java.util.Properties"/>
     <fullyQualifiedTypeName name="lesson12_api.PropertyPrint"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="student.RangeException"/>
     <fullyQualifiedTypeName name="student.Student"/>
     <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="lesson12_api.Wrapper"/>
@@ -55,9 +40,24 @@
     <fullyQualifiedTypeName name="lesson12_api.ScannerEx"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="shape.Hexahedron"/>
     <fullyQualifiedTypeName name="study.Member"/>
     <fullyQualifiedTypeName name="study.MemberMain2"/>
+    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+    <fullyQualifiedTypeName name="lesson12_api.CalendarEx"/>
+    <fullyQualifiedTypeName name="lesson12_api.DateEx"/>
+    <fullyQualifiedTypeName name="java.time.DayOfWeek"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.util.function.BiFunction"/>
+    <fullyQualifiedTypeName name="lesson12_api.ArraysEx"/>
+    <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+    <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="marble.MarbleMain"/>
+    <fullyQualifiedTypeName name="marble.area.City"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
 </qualifiedTypeNameHistroy>

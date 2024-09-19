@@ -1,22 +1,26 @@
 package student;
 import static student.StudentUtils.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 // Logic
 public class StudentService {
-	private Student[] students = new Student[5];
-	private Student[] totalSortedStudents;
-	private Student[] noSortedStudents;
-	private Student[] nameSortedStudents;
+	private List<Student> students = new ArrayList<Student>();
+	private List<Student> totalSortedStudents;
+	private List<Student> noSortedStudents;
+	private List<Student> nameSortedStudents;
 	
-	private int cnt;
+//	private int cnt;
 	
 	{
-		students[cnt++] = new Student(1, "새똥이", 80, 90, 100);
-		students[cnt++] = new Student(2, "개똥이", 77, 66, 77);
-		students[cnt++] = new Student(3, "새똥이", 80, 90, 100);
-		students[cnt++] = new Student(4, "개똥이", 77, 66, 77);
+//		students.sort(null);
+		students.add (new Student(1, "새똥이", 80, 90, 100));
+		students.add (new Student(2, "개똥이", 77, 66, 77));
+		students.add (new Student(3, "새똥이", 80, 90, 100));
+		students.add (new Student(4, "개똥이", 77, 66, 77));
 		cloneAndSort();
 	}
 	// 학생 등록
@@ -29,16 +33,14 @@ public class StudentService {
 		int kor = checkRange(nextInt("국어"));
 		int eng = checkRange(nextInt("영어"));
 		int mat = checkRange(nextInt("수학"));
-		if(cnt == students.length) {
-			students = Arrays.copyOf(students, students.length * 2); 
-		}
-		students[cnt++] = new Student(no, name, kor, eng, mat);
+		
+		students.add(new Student(no, name, kor, eng, mat));
 	}
 	// 학생 목록 조회
 	public void list() {
 //		System.out.println("list()");
 		int input = checkRange(nextInt("1. 입력순 2. 학번순 3. 이름순 4. 석차순"), 1, 4);
-		Student[] tmp = null;
+		List<Student> tmp = null;
 		switch (input) {
 		case 1:
 			tmp = students;
@@ -57,12 +59,12 @@ public class StudentService {
 			break;
 		}
 		System.out.println("학번   이름    국어    영어    수학    총점    평균");
-		System.out.println("===================================================");
-		for(int i = 0 ; i < cnt ; i++) {
-//			System.out.println(students[i]);
-			System.out.println(tmp[i]);
-		}
-	}
+		System.out.println("===================================================");}
+//		for(int i = 0 ; i < cnt ; i++) {
+//			System.out.println(students);
+//			System.out.println(tmp);
+//		}
+//	}
 	// 학생 이름, 점수 수정
 	public void modify() {
 		// 1. 학번 입력
@@ -87,9 +89,9 @@ public class StudentService {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
 			return;
 		}
-		for(int i = 0 ; i < cnt ; i++) {
-			if(students[i] == s) { // i = 1
-				System.arraycopy(students, i + 1, students, i, cnt-- - i - 1);
+		for(int i = 0 ;; i++) {
+			if(students.get(i) == s) { // i = 1
+				System.arraycopy(students, i + 1, students, i, i-- - i - 1);
 				break;
 			}
 		}
@@ -98,9 +100,9 @@ public class StudentService {
 	private Student findBy(int no) {
 		Student student = null;
 //		int no = nextInt("학번");
-		for(int i = 0 ; i < cnt ; i++) {
-			if(students[i].getNo() == no) {
-				student = students[i];
+		for(int i = 0 ; i < students.size() ; i++) {
+			if(students.get(i).getNo() == no) {
+				student = students.get(i);
 			}
 		}
 		return student;
@@ -140,44 +142,52 @@ public class StudentService {
 		return checkRange(num, 0, 100);
 	}
 	
+	
+	List<Student> copy = new ArrayList<>();
 	// 정렬
 	public void cloneAndSort() {
-		noSortedStudents = students.clone();
-		nameSortedStudents = students.clone();
-		totalSortedStudents = students.clone();
+		noSortedStudents.addAll(students);
+		nameSortedStudents.addAll(students);
+		totalSortedStudents.addAll(students);
 		
-		sort(0, noSortedStudents);
-		sort(1, nameSortedStudents);
-		sort(2, totalSortedStudents);
-	}
 	
-	private void sort(int type, Student[] target) {
-		Student[] arr = target;
-		// 회차 반복
-		for(int i = 0 ; i < cnt - 1; i++) {
-			// 비교 반복
-			for(int j = 0 ; j < cnt - 1 - i; j++) { // 0,1,2,3
+		
+
+	}
+	private void sort1(int type, List<Student> nameSortedStudents2) {
+	
+		sort1(0, noSortedStudents);
+		sort1(1, nameSortedStudents);
+		sort1(2, totalSortedStudents);
+		
+	}
+	private void sort(int type, List<Student> noSortedStudents2) {
+		List<Student> arr = noSortedStudents2;
+//		 회차 반복
+		for(int i = 0 ; i < students.size() - 1; i++) {
+//			 비교 반복
+			for(int j = 0 ; j < students.size() - 1 - i; j++) { // 0,1,2,3
 				// 값 비교 자리 교환
 				boolean condition = false;
 				switch (type) {
 				case 0:
-					condition = arr[j].getNo() > arr[j+1].getNo();
+					condition = ((Student) arr).getNo() > ((Student) arr.get(j + 1)).getNo();
 					break;
 				case 1:
-					condition = arr[j].getName().compareTo(arr[j+1].getName()) > 0;
+					condition = ((Student) arr).getName().compareTo(((Student) arr.get(j + 1)).getName()) > 0;
 					break;
 				case 2:
-					condition = arr[j].total() < arr[j+1].total();
+					condition = ((Student) arr).total() < ((Student) arr.get(j + 1)).total();
 					break;
 
 				default:
 					break;
 				}
-				if(condition) {
-					Student tmp = arr[j];
-					arr[j] = arr[j+1];
-					arr[j+1] = tmp;
-				}
+//				if(condition) {
+//					Student tmp = (Student) arr.get(j);
+//					arr = (List<Student>) arr.get(j+1);
+//					students = (List<Student>) tmp;
+//				}
 			}
 		}
 	}
