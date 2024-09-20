@@ -48,7 +48,7 @@ public class SetEx2 {
 		
 		@Override
 		public String toString() {
-			return "Member = ;
+			return "Member [name=" + name + ", age=" + age + "]";
 		}
 		@Override
 		protected void finalize() throws Throwable {

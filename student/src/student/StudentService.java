@@ -4,6 +4,7 @@ import static student.StudentUtils.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 // Logic
@@ -16,7 +17,6 @@ public class StudentService {
 //	private int cnt;
 	
 	{
-//		students.sort(null);
 		students.add (new Student(1, "새똥이", 80, 90, 100));
 		students.add (new Student(2, "개똥이", 77, 66, 77));
 		students.add (new Student(3, "새똥이", 80, 90, 100));
@@ -59,12 +59,12 @@ public class StudentService {
 			break;
 		}
 		System.out.println("학번   이름    국어    영어    수학    총점    평균");
-		System.out.println("===================================================");}
-//		for(int i = 0 ; i < cnt ; i++) {
-//			System.out.println(students);
-//			System.out.println(tmp);
-//		}
-//	}
+		System.out.println("===================================================");
+		for(int i = 0 ; i < tmp.size() ; i++) {
+			System.out.println(students);
+			System.out.println(tmp.get(i));
+		}
+	}
 	// 학생 이름, 점수 수정
 	public void modify() {
 		// 1. 학번 입력
@@ -75,7 +75,8 @@ public class StudentService {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
 			return;
 		}
-		s.setName(checkName(nextLine("이름")));
+		String name = next("이름", String.class, str -> {return true;}, "정확한 이름의 조건을 입력하세요");
+		s.setName(name);
 		s.setKor(checkRange(nextInt("국어")));
 		s.setEng(checkRange(nextInt("영어")));
 		s.setMat(checkRange(nextInt("수학")));
@@ -89,12 +90,7 @@ public class StudentService {
 			System.out.println("입력한 학번은 존재하지 않습니다.");
 			return;
 		}
-		for(int i = 0 ;; i++) {
-			if(students.get(i) == s) { // i = 1
-				System.arraycopy(students, i + 1, students, i, i-- - i - 1);
-				break;
-			}
-		}
+		students.remove(s);
 	}
 	
 	private Student findBy(int no) {
@@ -113,7 +109,7 @@ public class StudentService {
 	 */
 	String checkName(String name) {
 		char[] chs = name.toCharArray();
-//		String s = new String(chs);
+		//	String s = new String(chs);
 		if(chs.length < 2 || chs.length > 4) {
 			throw new RuntimeException("이름은 2글자에서 4글자 사이로 입력하세요");
 		}
@@ -146,49 +142,28 @@ public class StudentService {
 	List<Student> copy = new ArrayList<>();
 	// 정렬
 	public void cloneAndSort() {
-		noSortedStudents.addAll(students);
-		nameSortedStudents.addAll(students);
-		totalSortedStudents.addAll(students);
+		noSortedStudents = new ArrayList<Student>(students);
+		nameSortedStudents= new ArrayList<Student>(students);
+		totalSortedStudents= new ArrayList<Student>(students);
 		
-	
-		
+		noSortedStudents.sort((a, b) -> a.getNo() - b.getNo());
+		nameSortedStudents.sort(new Comparator<Student>() {
 
-	}
-	private void sort1(int type, List<Student> nameSortedStudents2) {
-	
-		sort1(0, noSortedStudents);
-		sort1(1, nameSortedStudents);
-		sort1(2, totalSortedStudents);
-		
-	}
-	private void sort(int type, List<Student> noSortedStudents2) {
-		List<Student> arr = noSortedStudents2;
-//		 회차 반복
-		for(int i = 0 ; i < students.size() - 1; i++) {
-//			 비교 반복
-			for(int j = 0 ; j < students.size() - 1 - i; j++) { // 0,1,2,3
-				// 값 비교 자리 교환
-				boolean condition = false;
-				switch (type) {
-				case 0:
-					condition = ((Student) arr).getNo() > ((Student) arr.get(j + 1)).getNo();
-					break;
-				case 1:
-					condition = ((Student) arr).getName().compareTo(((Student) arr.get(j + 1)).getName()) > 0;
-					break;
-				case 2:
-					condition = ((Student) arr).total() < ((Student) arr.get(j + 1)).total();
-					break;
-
-				default:
-					break;
-				}
-//				if(condition) {
-//					Student tmp = (Student) arr.get(j);
-//					arr = (List<Student>) arr.get(j+1);
-//					students = (List<Student>) tmp;
-//				}
+			@Override
+			public int compare(Student o1, Student o2) {
+				// TODO Auto-generated method stub
+				return o1.getName().compareTo(o2.getName());
 			}
-		}
+		});
+		Comparator<Student> comp = new MyComp();
+		totalSortedStudents.sort(comp);
+	}
+}
+class MyComp implements Comparator<Student>{
+
+	@Override
+	public int compare(Student o1, Student o2) {
+		// TODO Auto-generated method stub
+		return  o2.total() - o1.total();
 	}
 }
