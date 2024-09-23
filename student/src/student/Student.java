@@ -1,8 +1,10 @@
 package student;
 
+import java.io.Serializable;
+
 // 학생 예제 > java beans 명세서에 맞게끔 수정
 // field 는 private, method는 public
-public class Student implements Cloneable{
+public class Student implements Serializable{
 	private int no;
 	private String name;
 	private int kor;
