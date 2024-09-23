@@ -12,9 +12,9 @@ public class StudentUtils {
 		return scanner.nextLine();
 	}
 
-	static int nextInt(String msg) {
-		return Integer.parseInt(nextLine(msg));
-	}
+//	static int nextInt(String msg) {
+//		return Integer.parseInt(nextLine(msg));
+//	}
 
 	// 입력 통합
 	static <T> T next(String msg, Class<T> clazz) {

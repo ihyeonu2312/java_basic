@@ -1,11 +1,16 @@
 package student;
 import static student.StudentUtils.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 // Logic
 public class StudentService {
@@ -18,28 +23,29 @@ public class StudentService {
 	
 	{
 		students.add (new Student(1, "새똥이", 80, 90, 100));
-		students.add (new Student(2, "개똥이", 77, 66, 77));
+		students.add (new Student(2, "개똥이", 77, 66, 77)); // 등록 시 유지
 		students.add (new Student(3, "새똥이", 80, 90, 100));
 		students.add (new Student(4, "개똥이", 77, 66, 77));
 		cloneAndSort();
 	}
 	// 학생 등록
-	public void add() {
-		int no = nextInt("학번");
-		if(findBy(no) != null) {
-			throw new RuntimeException("중복되지 않는 학번을 입력하세요");
-		}
-		String name = checkName(nextLine("이름"));
-		int kor = checkRange(nextInt("국어"));
-		int eng = checkRange(nextInt("영어"));
-		int mat = checkRange(nextInt("수학"));
+	public void add() throws FileNotFoundException, IOException {
+		int no = next("학번", Integer.class, n -> findBy(n) == null, "중복된 학번입니다");
+		String name = next("이름", String.class, str -> str.matches("^[가-힣]{2,4}") , "2-4글자 올바른 이름을 입력하세요");
+		int kor = next("국어", Integer.class, i -> i <= 100 && i >= 0, "0 - 100사이 점수를 입력하세요");
+		int eng = next("영어", Integer.class, i -> i <= 100 && i >= 0, "0 - 100사이 점수를 입력하세요");
+		int mat = next("수학", Integer.class, i -> i <= 100 && i >= 0, "0 - 100사이 점수를 입력하세요");
+		
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("studentAdd"));
+		
 		
 		students.add(new Student(no, name, kor, eng, mat));
+		
 	}
 	// 학생 목록 조회
 	public void list() {
 //		System.out.println("list()");
-		int input = checkRange(nextInt("1. 입력순 2. 학번순 3. 이름순 4. 석차순"), 1, 4);
+		int input = next("1. 입력순 2. 학번순 3. 이름순 4. 석차순", Integer.class, i -> i <= 4 && i >= 1 , "1- 4사이값을 입력하세요");
 		List<Student> tmp = null;
 		switch (input) {
 		case 1:
@@ -61,7 +67,7 @@ public class StudentService {
 		System.out.println("학번   이름    국어    영어    수학    총점    평균");
 		System.out.println("===================================================");
 		for(int i = 0 ; i < tmp.size() ; i++) {
-			System.out.println(students);
+	
 			System.out.println(tmp.get(i));
 		}
 	}
@@ -69,27 +75,44 @@ public class StudentService {
 	public void modify() {
 		// 1. 학번 입력
 		// 2. 학번을 통한 탐색(배열) >> 학생
-		Student s = findBy(nextInt("학번"));
+		Student s = findBy(next("학번", Integer.class, n -> findBy(n) != null, "존재하지않는 학번"));
 		// 3. 이름, 국어, 영어, 수학 점수 변경
-		if(s == null) {
-			System.out.println("입력한 학번은 존재하지 않습니다.");
-			return;
-		}
-		String name = next("이름", String.class, str -> {return true;}, "정확한 이름의 조건을 입력하세요");
+
+//		Predicate<String> r;
+//		r = new Predicate<String>() {
+//			
+//			@Override
+//			public boolean test(String t) {
+//				for(;(char)t < '가';) {
+//					
+//				}
+//				return t < '가' || t > '힣';
+//			}
+//		};
+		
+		Predicate<Integer> p;
+		p = new Predicate<Integer>() {
+			
+			@Override
+			public boolean test(Integer t) {
+				// TODO Auto-generated method stub
+				return t >= 0 && t <= 100;
+			}
+		};
+		String name = next("이름", String.class, str -> str.matches("^[가-힣]{2,4}"), "정확한 이름을 입력하세요");
 		s.setName(name);
-		s.setKor(checkRange(nextInt("국어")));
-		s.setEng(checkRange(nextInt("영어")));
-		s.setMat(checkRange(nextInt("수학")));
+		Integer kor = next("국어", Integer.class, p, "0이상 100이하의 점수를 입력하세요");
+		s.setKor(kor);
+		Integer eng = next("영어", Integer.class, p, "0이상 100이하의 점수를 입력하세요");
+		s.setEng(eng);
+		Integer mat = next("수학", Integer.class, p, "0이상 100이하의 점수를 입력하세요");
+		s.setMat(mat);
 		
 	}
 	// 학생 삭제
 	public void remove() {
-		Student s = findBy(nextInt("학번"));
+		Student s = findBy(next("학번", Integer.class, n -> findBy(n) != null, "존재하지않는 학번"));
 		// 3. 이름, 국어, 영어, 수학 점수 변경
-		if(s == null) {
-			System.out.println("입력한 학번은 존재하지 않습니다.");
-			return;
-		}
 		students.remove(s);
 	}
 	

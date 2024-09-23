@@ -10,7 +10,7 @@ public class StudentMain {
 		
 		while(true) {
 			try {
-				int input = ss.checkRange(StudentUtils.nextInt("1. 조회 2. 등록 3. 수정 4. 삭제 5. 종료"),1,5);
+				int input = StudentUtils.next("1. 조회 2. 등록 3. 수정 4. 삭제 5. 종료",Integer.class, n -> n >= 1 && n <= 5, "1-5사이값을입력");
 				switch (input) {
 				case 1:
 					ss.list();
