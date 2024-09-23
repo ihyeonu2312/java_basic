@@ -1,10 +1,13 @@
 package student;
 import static student.StudentUtils.*;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -14,7 +17,7 @@ import java.util.function.Predicate;
 
 // Logic
 public class StudentService {
-	private List<Student> students = new ArrayList<Student>();
+	public List<Student> students = new ArrayList<Student>();
 	private List<Student> totalSortedStudents;
 	private List<Student> noSortedStudents;
 	private List<Student> nameSortedStudents;
@@ -26,6 +29,19 @@ public class StudentService {
 		students.add (new Student(2, "개똥이", 77, 66, 77)); // 등록 시 유지
 		students.add (new Student(3, "새똥이", 80, 90, 100));
 		students.add (new Student(4, "개똥이", 77, 66, 77));
+		
+		try {
+			loadlist();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		cloneAndSort();
 	}
 	// 학생 등록
@@ -36,11 +52,12 @@ public class StudentService {
 		int eng = next("영어", Integer.class, i -> i <= 100 && i >= 0, "0 - 100사이 점수를 입력하세요");
 		int mat = next("수학", Integer.class, i -> i <= 100 && i >= 0, "0 - 100사이 점수를 입력하세요");
 		
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("studentAdd"));
+//		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("studentAdd"));
 		
-		
-		students.add(new Student(no, name, kor, eng, mat));
-		
+	    	students.add(new Student(no, name, kor, eng, mat));
+	    	
+//	    	byte a = students.add(new Student(no, name, kor, eng, mat));
+	    
 	}
 	// 학생 목록 조회
 	public void list() {
@@ -180,6 +197,13 @@ public class StudentService {
 		});
 		Comparator<Student> comp = new MyComp();
 		totalSortedStudents.sort(comp);
+	}
+	
+	public void loadlist() throws FileNotFoundException, IOException, ClassNotFoundException {
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("student.txt"));
+		List<Student> result = (List<Student>) ois.readObject();
+		students = result;
+
 	}
 }
 class MyComp implements Comparator<Student>{
