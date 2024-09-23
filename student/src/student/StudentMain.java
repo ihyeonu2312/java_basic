@@ -1,9 +1,13 @@
 package student;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class StudentMain {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		// UI
 		// Create Read Update Delete
 		StudentService ss = new StudentService();
@@ -28,6 +32,8 @@ public class StudentMain {
 					ss.cloneAndSort();
 					break;
 				case 5:
+					ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("student.txt"));
+					oos.writeObject(ss.students);
 					System.out.println("bye");
 					return;
 				default:
