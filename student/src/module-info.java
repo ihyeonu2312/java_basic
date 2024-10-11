@@ -5,4 +5,5 @@
  * 
  */
 module student {
+	requires lombok;
 }

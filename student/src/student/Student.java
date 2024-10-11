@@ -2,8 +2,13 @@ package student;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 // 학생 예제 > java beans 명세서에 맞게끔 수정
 // field 는 private, method는 public
+@Getter
+@Setter
 public class Student implements Serializable{
 	private int no;
 	private String name;
@@ -32,48 +37,7 @@ public class Student implements Serializable{
 		arr = s.arr.clone();
 	}
 	
-	// no getter
-	public int getNo() {
-		return no;
-	}
-	
-	// no setter
-	public void setNo(int no) {
-		this.no = no;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public int getKor() {
-		return kor;
-	}
-	
-	public void setKor(int kor) {
-		this.kor = kor;
-	}
-	
-	public int getEng() {
-		return eng;
-	}
-	
-	public void setEng(int eng) {
-		this.eng = eng;
-	}
-	
-	public int getMat() {
-		return mat;
-	}
-	
-	public void setMat(int mat) {
-		this.mat = mat;
-	}
-	
+
 	public String toString() {
 		return String.format("%4d %4s %6d %7d %7d %7d %7.2f", no, name, kor, eng, mat, total(), avg());
 	}
